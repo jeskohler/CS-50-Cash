@@ -1,0 +1,44 @@
+
+#include <stdio.h>
+#include <math.h>
+#include <cs50.h>
+
+int main(void)
+{
+    //prompt user for amt of change.
+    float coins_paid;
+    int change;
+    int coins_owed;
+    
+    do
+    {
+        coins_paid = get_float("Enter the amount of change you want back: ");
+        change = round(coins_paid * 100);
+    }
+    
+    while (coins_paid <= 0);
+    
+    //keep track of coin used.
+    coins_owed = 0;
+    
+    //modulo math.
+    coins_owed += change / 25;
+    change %= 25;
+
+    coins_owed += change / 10;
+    change %= 10;
+
+    coins_owed += change / 5;
+    change %= 5;
+
+    coins_owed += change / 1;
+    change %= 1;
+
+
+    printf("You entered:\t%.2f\n", coins_paid);  
+    printf("least coins possible:\t%d\n", coins_owed);
+}
+
+
+
+
